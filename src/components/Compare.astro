@@ -1,0 +1,24 @@
+---
+import { CONFIG } from '../data/site';
+const rows: [string, string, string, string, boolean?][] = [
+  ['Cost', `${CONFIG.price} once`, '$5k+ every month', 'Your evenings'],
+  ['Time to first deliverable', 'Minutes', '2–4 weeks', 'Whenever you find time'],
+  ['Channels covered', 'SEO, AI search, local, content, paid, email, CRO', 'Usually 1–2', 'What you remember to ask'],
+  ['Knows your brand', '✓ CLAUDE.md, read by every agent', 'After onboarding', 'Re-explained every chat'],
+  ['AI search (GEO/AEO)', '✓ Audit, fix and track', 'Rarely offered', '—'],
+  ['Who owns the work', '✓ You. Plain files in your repo', 'Their logins', 'You'],
+  ['Updates', '✓ Free, for life', 'Billed', 'Never', true],
+];
+---
+<section class="sec bg-forest">
+  <div class="wrap">
+    <div class="eyebrow rv">Compared</div>
+    <h2 class="h2 rv">CMOkit vs <em>doing it the old way.</em></h2>
+    <div class="tbl rv" role="table">
+      <div class="tr head" role="row"><div></div><div class="us">CMOkit</div><div>Agency</div><div>DIY with prompts</div></div>
+      {rows.map(([k, us, ag, diy, bad]) => (
+        <div class="tr" role="row"><div>{k}</div><div class="us y">{us}</div><div class="n">{ag}</div><div class={bad ? 'bad' : 'n'}>{diy}</div></div>
+      ))}
+    </div>
+  </div>
+</section>

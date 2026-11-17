@@ -1,0 +1,53 @@
+---
+import { CONFIG } from '../data/site';
+const { agents, skills, commands } = CONFIG.counts;
+---
+<header class="hero">
+  <div class="wrap">
+    <div class="pill rise" style="animation-delay:.05s"><b>New</b> {agents} agents · {skills} skills · {commands} commands for Claude Code</div>
+    <h1 class="rise" style="animation-delay:.15s">The <em>Chief Marketing Officer</em> your startup <span class="strike">can finally afford.<svg viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 20 C 90 6, 200 26, 396 10"/></svg></span></h1>
+    <p class="lede rise" style="animation-delay:.3s">CMOkit puts a full marketing department inside Claude Code. <strong>SEO, AI search, content, ads, email and launches</strong>, run by {agents} specialists who learn your brand once and get to work. No $250k salary. No agency retainer.</p>
+    <div class="hero-ctas rise" style="animation-delay:.42s">
+      <a href="#pricing" class="btn btn-dark">Get CMOkit <span class="arr">→</span></a>
+      <a href="#team" class="btn btn-ghost">Meet the team</a>
+    </div>
+    <p class="fine rise" style="animation-delay:.52s">One-time payment<span>·</span>Lifetime updates<span>·</span>Installs in 2 minutes</p>
+
+    <div class="board rise" style="animation-delay:.6s" aria-label="Example: CMOkit working on a launch">
+      <div class="board-top">
+        <span>your-startup / .claude</span>
+        <span class="live"><span class="dot"></span>CMO ON SHIFT</span>
+      </div>
+      <div class="board-body">
+        <div class="board-l">
+          <h3>Monday growth briefing.<br /><em>Before your coffee.</em></h3>
+          <div class="wave" id="heroWave" aria-hidden="true"></div>
+          <div class="wave-meta"><span>ORGANIC SESSIONS · 12 WEEKS</span><span>illustrative</span></div>
+          <div class="kpis">
+            <div class="kpi"><small>Pages audited</small><b data-count="214">214</b></div>
+            <div class="kpi"><small>Fixes shipped</small><b data-count="37">37</b></div>
+            <div class="kpi"><small>AI citations</small><b data-count="9">9</b><b><u>new</u></b></div>
+          </div>
+        </div>
+        <div class="board-r">
+          <div class="prompt"><div class="who">YOU</div><span id="typed">/launch-plan we launch on Product Hunt next Tuesday</span><span class="caret"></span></div>
+          <ul class="feed" id="feed">
+            <li><span class="ag">growth-strategist</span><span class="tx">Your bottleneck is signups, not traffic. Splitting this into 4 jobs.</span></li>
+            <li><span class="ag">seo-technical</span><span class="tx">Fixed 12 broken canonicals. Sitemap resubmitted. <span class="ok">✓</span></span></li>
+            <li><span class="ag">geo-ai-visibility</span><span class="tx">Wrote your llms.txt. Perplexity can now cite your pricing page.</span></li>
+            <li><span class="ag">content-marketer</span><span class="tx">3 launch posts drafted in your voice, humanized.</span></li>
+            <li><span class="ag">brand-voice</span><span class="tx">Cut two claims we can't prove. Ready to ship. <span class="ok">✓</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats rise" style="animation-delay:.75s">
+      <div><b>{agents}</b> specialist agents</div>
+      <div><b>{skills}</b> skills</div>
+      <div><b>{commands}</b> slash commands</div>
+      <div><b>~2 min</b> to install</div>
+      <div><b>$0</b> monthly</div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+---
+import { engines } from '../data/site';
+---
+<section class="sec bg-sage" id="ai-search">
+  <div class="wrap">
+    <div class="eyebrow rv">GEO · AEO · AI visibility</div>
+    <h2 class="h2 rv">Your next customer asks ChatGPT. <em>Be the answer.</em></h2>
+    <p class="sub rv" style="color:#3d5047">Most SEO tools stop at Google. CMOkit audits, fixes and tracks how AI engines see you: citability, AI crawler access, <span class="mono" style="font-size:14px">llms.txt</span>, schema, brand mentions and per-platform tuning.</p>
+    <div class="ai-wrap">
+      <div class="answer rv">
+        <div class="q">“What's the best tool for a solo founder to run marketing?”</div>
+        <div class="resp">For solo founders, the most practical setup is an AI marketing team you can run yourself. <mark>yourstartup.com</mark> stands out because it covers SEO, content and launches in one place and explains its pricing clearly…</div>
+        <div class="src"><span>sources</span><span class="me">yourstartup.com</span><span>reddit.com</span><span>g2.com</span></div>
+      </div>
+      <div class="engines">
+        {engines.map(([n, o, v]) => (
+          <div class="engine rv">
+            <div><small>{o}</small><br /><b>{n}</b></div>
+            <div><div class="row"><span>example visibility</span><u>{v}%</u></div><div class="meter"><i data-w={v}></i></div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

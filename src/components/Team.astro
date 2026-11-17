@@ -1,0 +1,41 @@
+---
+import { departments } from '../data/site';
+const initials = (n: string) => n.split('-').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+---
+<section class="sec" id="team">
+  <div class="wrap">
+    <div class="eyebrow rv">Your marketing department</div>
+    <h2 class="h2 rv">Every floor of a growth team. <em>Already staffed.</em></h2>
+    <p class="sub rv">Ask in plain English. The <code class="mono" style="font-size:14px">growth-strategist</code> finds the real bottleneck and hands each job to the specialist who should own it.</p>
+    <div class="tabs rv" role="tablist" aria-label="Departments">
+      {departments.map((d, i) => (
+        <button class="tab" role="tab" id={`tab-${i}`} aria-controls={`panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+          {d.key}<span class="n">{d.skills.length + d.commands.length}+</span>
+        </button>
+      ))}
+    </div>
+    <div class="rv">
+      {departments.map((d, i) => (
+        <div class="dept" role="tabpanel" id={`panel-${i}`} aria-labelledby={`tab-${i}`} hidden={i !== 0}>
+          <div class="dept-card">
+            <div class="dept-head"><small>{d.label}</small><h3>{d.title}</h3><p>{d.desc}</p></div>
+            <div class="agents">
+              {d.agents.map(([n, p]) => (
+                <div class="agent"><span class="av">{initials(n)}</span><div><b>{n}</b><p>{p}</p></div></div>
+              ))}
+            </div>
+          </div>
+          <div class="dept-card skills-card">
+            <div class="lbl">A few of the skills on this floor</div>
+            <div class="chips">
+              {[...d.commands.map((c) => ({ t: c, cmd: true })), ...d.skills.map((s) => ({ t: s, cmd: false }))].map((c, k) => (
+                <span class={c.cmd ? 'chip cmd' : 'chip'} style={`animation-delay:${k * 35}ms`}>{c.t}</span>
+              ))}
+            </div>
+            <div class="try"><small>Try saying</small><p><q>{d.tryThis}</q></p></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

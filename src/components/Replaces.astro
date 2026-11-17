@@ -1,0 +1,12 @@
+---
+import { roles } from '../data/site';
+const items = [...roles, ...roles];
+---
+<section class="replaces">
+  <p>One install covers the roles you can't hire yet</p>
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      {items.map(([r, a]) => <span class="role"><s>{r}</s><i class="mono">{a}</i></span>)}
+    </div>
+  </div>
+</section>

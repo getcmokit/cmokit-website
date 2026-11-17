@@ -1,0 +1,19 @@
+---
+import { faqs } from '../data/site';
+---
+<section class="sec bg-paper" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rv">FAQ</div>
+    <h2 class="h2 rv">Questions founders ask.</h2>
+    <div class="faq rv">
+      {faqs.map(([q, a], i) => (
+        <details open={i === 0}><summary>{q}<span class="pm">+</span></summary><p set:html={a} /></details>
+      ))}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })),
+})} />

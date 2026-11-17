@@ -139,10 +139,4 @@ export const reviews: Review[] = [
     avatar: '/reviews/ioannis-antypas.jpg',
     url: 'https://x.com/ioannis_antypas',
   },
-  {
-    quote: "buying it last week was probably one of my best investments. genuinely love what he's building here 🔥",
-    name: 'abhi',
-    meta: 'Founder of craftpad · on AgentsKit, our first kit',
-    url: 'https://x.com/letcontactabhi',
-  },
 ];

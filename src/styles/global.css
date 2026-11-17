@@ -322,3 +322,10 @@ footer{background:var(--ink);color:rgba(249,246,239,.6);font-size:13px;padding:6
 .dept[hidden]{display:none}
 .chip{animation-play-state:paused}
 .dept:not([hidden]) .chip{animation-play-state:running}
+/* launch pricing */
+.launch{display:inline-flex;align-items:center;gap:10px;margin-top:16px;background:rgba(212,243,107,.12);border:1px solid rgba(212,243,107,.4);color:var(--lime);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600}
+.launch-hero{display:inline-flex;align-items:center;gap:8px;margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--muted)}
+.launch-hero .dot{background:var(--forest-3);box-shadow:none;animation:none}
+.launch-hero b{color:var(--ink);font-weight:700}
+.launch-hero s{color:var(--muted);opacity:.7}
+.launch-hero + .fine{margin-top:12px}

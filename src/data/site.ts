@@ -1,8 +1,9 @@
 // Edit these to change pricing and the checkout link everywhere on the page.
 export const CONFIG = {
-  price: '$99',
-  comparePrice: '$199', // set to '' to hide the strikethrough
+  price: '$39',
+  comparePrice: '$99', // set to '' to hide the strikethrough
   checkoutUrl: '#', // your Polar / Stripe / Lemon Squeezy link
+  launchNote: 'Launch price for the first 20 customers only', // set to '' to hide
   installCmd: 'npx github:getcmokit/cmokit init',
   counts: { agents: 56, skills: 505, commands: 32 },
 };

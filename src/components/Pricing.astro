@@ -22,6 +22,9 @@ const { agents, skills, commands } = CONFIG.counts;
         <small>CMOkit · complete</small>
         <div class="big"><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>}</div>
         <div class="once">one-time payment · lifetime updates</div>
+        {CONFIG.launchNote && (
+          <div class="launch"><span class="dot"></span>{CONFIG.launchNote}{CONFIG.comparePrice && <>, then {CONFIG.comparePrice}</>}</div>
+        )}
         <ul>
           <li>{agents} agents, {skills} skills, {commands} slash commands</li>
           <li>SEO, GEO/AEO, local SEO, content, paid, email, CRO</li>

@@ -11,6 +11,9 @@ const { agents, skills, commands } = CONFIG.counts;
       <a href="#pricing" class="btn btn-dark">Get CMOkit <span class="arr">→</span></a>
       <a href="#team" class="btn btn-ghost">Meet the team</a>
     </div>
+    {CONFIG.launchNote && (
+      <p class="launch-hero rise" style="animation-delay:.48s"><span class="dot"></span><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>} {CONFIG.launchNote.charAt(0).toLowerCase() + CONFIG.launchNote.slice(1)}</p>
+    )}
     <p class="fine rise" style="animation-delay:.52s">One-time payment<span>·</span>Lifetime updates<span>·</span>Installs in 2 minutes</p>
 
     <div class="board rise" style="animation-delay:.6s" aria-label="Example: CMOkit working on a launch">

@@ -2,7 +2,7 @@
 export const CONFIG = {
   price: '$39',
   comparePrice: '$99', // set to '' to hide the strikethrough
-  checkoutUrl: '#', // your Polar / Stripe / Lemon Squeezy link
+  checkoutUrl: 'https://buy.polar.sh/polar_cl_EV6jWPc3cEiLOASFrWI3BjGBaHTrL8XA7gW6W0DROA9', // your Polar / Stripe / Lemon Squeezy link
   launchNote: 'Launch price for the first 20 customers only', // set to '' to hide
   installCmd: 'npx github:getcmokit/cmokit init',
   counts: { agents: 56, skills: 505, commands: 32 },

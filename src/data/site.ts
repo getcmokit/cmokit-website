@@ -8,14 +8,6 @@ export const CONFIG = {
   counts: { agents: 56, skills: 505, commands: 32 },
 };
 
-// Third-party scripts loaded on every page.
-export const ANALYTICS = {
-  // DataFast: paste your Website ID (dfid_…) and root domain. The script stays off until both are set.
-  datafastWebsiteId: 'dfid_qmyOOQHdBg5VZJezPKkLu',
-  datafastDomain: 'cmokit.co',
-  // Ship or Die hackathon verification
-  shipOrDieSite: '2471444cbae9aaa84c3dbf42f2ce819ca96c32e7',
-};
 
 export const roles: [string, string][] = [
   ['SEO lead', 'seo-technical'],

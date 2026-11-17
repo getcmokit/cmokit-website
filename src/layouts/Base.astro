@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ANALYTICS } from '../data/site';
 
 interface Props { title: string; description: string }
 const { title, description } = Astro.props;
@@ -22,12 +21,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#123a2c" />
     <script is:inline>document.documentElement.classList.add("js")</script>
-    {ANALYTICS.datafastWebsiteId && ANALYTICS.datafastDomain && (
-      <script is:inline defer data-website-id={ANALYTICS.datafastWebsiteId} data-domain={ANALYTICS.datafastDomain} src="https://datafa.st/js/script.js"></script>
-    )}
-    {ANALYTICS.shipOrDieSite && (
-      <script is:inline defer src="https://www.ship-or-die.com/hackathon/verify.js" data-site={ANALYTICS.shipOrDieSite}></script>
-    )}
+    <!-- DataFast analytics -->
+    <script
+      is:inline
+      defer
+      data-website-id="dfid_qmyOOQHdBg5VZJezPKkLu"
+      data-domain="cmokit.co"
+      src="https://datafa.st/js/script.js">
+    </script>
+    <!-- Ship or Die hackathon verification -->
+    <script is:inline defer src="https://www.ship-or-die.com/hackathon/verify.js" data-site="2471444cbae9aaa84c3dbf42f2ce819ca96c32e7"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

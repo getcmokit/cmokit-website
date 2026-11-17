@@ -1,6 +1,6 @@
 # CMOkit website
 
-Landing page for [CMOkit](https://cmokit.co), built with [Astro](https://astro.build).
+Landing page for [CMOkit](https://www.cmokit.co), built with [Astro](https://astro.build).
 
 ```bash
 npm install

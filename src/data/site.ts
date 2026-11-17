@@ -11,8 +11,8 @@ export const CONFIG = {
 // Third-party scripts loaded on every page.
 export const ANALYTICS = {
   // DataFast: paste your Website ID (dfid_…) and root domain. The script stays off until both are set.
-  datafastWebsiteId: '',
-  datafastDomain: '',
+  datafastWebsiteId: 'dfid_qmyOOQHdBg5VZJezPKkLu',
+  datafastDomain: 'cmokit.co',
   // Ship or Die hackathon verification
   shipOrDieSite: '2471444cbae9aaa84c3dbf42f2ce819ca96c32e7',
 };

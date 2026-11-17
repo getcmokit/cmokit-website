@@ -1,5 +1,5 @@
 ---
-import { CONFIG } from '../data/site';
+import { CONFIG, reviews } from '../data/site';
 const { agents, skills, commands } = CONFIG.counts;
 ---
 <section class="sec" id="pricing">
@@ -8,9 +8,24 @@ const { agents, skills, commands } = CONFIG.counts;
     <h2 class="h2 rv">Hire once. <em>Never pay rent on it.</em></h2>
     <div class="price-grid">
       <div class="quote rv">
-        <blockquote>“buying it last week was probably one of my best investments. genuinely love what he's building here 🔥”</blockquote>
+        <div class="reviews" data-reviews>
+          {reviews.map((r, i) => (
+            <figure class="review" data-slide hidden={i !== 0}>
+              <blockquote>“{r.quote}”</blockquote>
+              <figcaption class="by">
+                {r.avatar ? <img class="av" src={r.avatar} alt={r.name} width="48" height="48" loading="lazy" /> : <span class="av">{r.name[0].toUpperCase()}</span>}
+                <div><b>{r.name}</b><small>{r.meta}</small></div>
+                {r.url && <a class="xlink" href={r.url} target="_blank" rel="noopener">See it on X ↗</a>}
+              </figcaption>
+            </figure>
+          ))}
+          {reviews.length > 1 && (
+            <div class="dots" role="tablist" aria-label="Reviews">
+              {reviews.map((r, i) => <button class="rdot" aria-label={`Review from ${r.name}`} aria-selected={i === 0 ? 'true' : 'false'} data-dot={i}></button>)}
+            </div>
+          )}
+        </div>
         <div>
-          <div class="by"><span class="av">A</span><div><b>abhi</b><small>Founder of craftpad · on AgentsKit, our first kit</small></div></div>
           <div class="guar">
             <div><b>Private repo</b>Access on checkout</div>
             <div><b>Lifetime updates</b>New skills, free</div>

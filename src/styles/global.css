@@ -329,3 +329,16 @@ footer{background:var(--ink);color:rgba(249,246,239,.6);font-size:13px;padding:6
 .launch-hero b{color:var(--ink);font-weight:700}
 .launch-hero s{color:var(--muted);opacity:.7}
 .launch-hero + .fine{margin-top:12px}
+/* reviews slider */
+.reviews{display:flex;flex-direction:column;flex:1}
+.review{display:flex;flex-direction:column;justify-content:space-between;flex:1;animation:fadeIn .6s ease}
+.review[hidden]{display:none}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.quote .by{flex-wrap:wrap}
+.quote .by img.av{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.quote .by .av{width:48px;height:48px}
+.xlink{margin-left:auto;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted);transition:all .2s}
+.xlink:hover{color:var(--ink);border-color:var(--ink)}
+.dots{display:flex;gap:6px;margin-top:22px}
+.rdot{width:18px;height:5px;border-radius:99px;border:0;background:var(--line);cursor:pointer;transition:all .3s;padding:0}
+.rdot[aria-selected="true"]{width:36px;background:var(--forest)}

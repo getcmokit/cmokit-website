@@ -127,3 +127,22 @@ document.querySelectorAll<HTMLElement>('.rv').forEach((el, i) => {
   el.style.transitionDelay = (i % 4) * 70 + 'ms';
   io.observe(el);
 });
+
+// review slider
+const slides = Array.from(document.querySelectorAll<HTMLElement>('[data-slide]'));
+const dots = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+if (slides.length > 1) {
+  let cur = 0;
+  const go = (i: number) => {
+    cur = i;
+    slides.forEach((s, j) => (s.hidden = j !== i));
+    dots.forEach((d, j) => d.setAttribute('aria-selected', String(j === i)));
+  };
+  dots.forEach((d, i) => d.addEventListener('click', () => { go(i); restart(); }));
+  let iv = 0;
+  const restart = () => {
+    clearInterval(iv);
+    if (!reduce) iv = window.setInterval(() => go((cur + 1) % slides.length), 7000);
+  };
+  restart();
+}

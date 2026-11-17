@@ -121,3 +121,28 @@ export const faqs: [string, string][] = [
   ['How do updates work?', 'Run <code>npx github:getcmokit/cmokit update</code>. It refreshes the components you installed and never touches your <code>CLAUDE.md</code> or files you\'ve customized.'],
   ['Is this affiliated with Anthropic?', 'No. CMOkit is an independent product built for Claude Code. "Claude" and "Anthropic" are trademarks of Anthropic.'],
 ];
+
+export interface Review {
+  quote: string;
+  name: string;
+  meta: string; // role / handle line
+  avatar?: string; // path in /public, falls back to an initial
+  url?: string; // link to the original post
+}
+
+// Real reviews from buyers of AgentsKit (the previous kit).
+export const reviews: Review[] = [
+  {
+    quote: "Mohit… thank you! I'm using your kit in my new project and it's actually really helpful.",
+    name: 'Ioannis Antypas',
+    meta: '@ioannis_antypas · on AgentsKit, our first kit',
+    avatar: '/reviews/ioannis-antypas.jpg',
+    url: 'https://x.com/ioannis_antypas',
+  },
+  {
+    quote: "buying it last week was probably one of my best investments. genuinely love what he's building here 🔥",
+    name: 'abhi',
+    meta: 'Founder of craftpad · on AgentsKit, our first kit',
+    url: 'https://x.com/letcontactabhi',
+  },
+];

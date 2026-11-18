@@ -342,3 +342,12 @@ footer{background:var(--ink);color:rgba(249,246,239,.6);font-size:13px;padding:6
 .dots{display:flex;gap:6px;margin-top:22px}
 .rdot{width:18px;height:5px;border-radius:99px;border:0;background:var(--line);cursor:pointer;transition:all .3s;padding:0}
 .rdot[aria-selected="true"]{width:36px;background:var(--forest)}
+/* hero pill: never wrap */
+.pill{white-space:nowrap;max-width:100%}
+.pill>span{overflow:hidden;text-overflow:ellipsis}
+.hero p.lede{max-width:540px}
+@media (max-width:600px){
+  .hide-sm{display:none}
+  .pill{font-size:12.5px;padding:6px 14px 6px 6px;gap:8px}
+  .pill b{font-size:10px;padding:3px 8px}
+}

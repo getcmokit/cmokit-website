@@ -6,63 +6,6 @@ const onScroll = () => nav?.classList.toggle('scrolled', scrollY > 10);
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// animated bar waves
-type Shape = (x: number, t: number) => number;
-function wave(id: string, n: number, shape: Shape, every: number, startDelay = 0) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const bars = Array.from({ length: n }, () => el.appendChild(document.createElement('i')));
-  const set = (t: number) =>
-    bars.forEach((b, i) => (b.style.height = Math.max(6, Math.min(100, shape(i / n, t))) + '%'));
-  setTimeout(() => set(0), startDelay);
-  if (!reduce) {
-    let t = 0;
-    setInterval(() => set((t += 0.6)), every);
-  }
-}
-const narrow = innerWidth < 600;
-wave('heroWave', narrow ? 34 : 52, (x, t) => 10 + 70 * Math.pow(x, 1.6) + 9 * Math.sin(x * 22 + t) + 6 * Math.sin(x * 7 - t * 0.7), 1400, 900);
-wave('finalWave', narrow ? 40 : 90, (x, t) => 30 + 35 * Math.sin(x * Math.PI) * (0.6 + 0.4 * Math.sin(x * 30 + t)), 1200);
-
-// hero: type the prompt, then stream the agent feed
-const cmd = '/launch-plan we launch on Product Hunt next Tuesday';
-const typed = document.getElementById('typed');
-const feed = Array.from(document.querySelectorAll<HTMLLIElement>('#feed li'));
-let timers: number[] = [];
-function runHero() {
-  if (!typed) return;
-  timers.forEach(clearTimeout);
-  timers = [];
-  feed.forEach((li) => li.classList.remove('on'));
-  if (reduce) {
-    typed.textContent = cmd;
-    feed.forEach((li) => li.classList.add('on'));
-    return;
-  }
-  typed.textContent = '';
-  cmd.split('').forEach((_, i) => timers.push(window.setTimeout(() => (typed.textContent = cmd.slice(0, i + 1)), i * 38)));
-  const done = cmd.length * 38;
-  feed.forEach((li, k) => timers.push(window.setTimeout(() => li.classList.add('on'), done + 500 + k * 900)));
-}
-setTimeout(runHero, 1100);
-if (!reduce) setInterval(runHero, 14000);
-
-// KPI counters
-setTimeout(() => {
-  document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
-    const to = Number(el.dataset.count);
-    if (reduce) return;
-    let v = 0;
-    const step = Math.max(1, Math.round(to / 40));
-    el.textContent = '0';
-    const iv = setInterval(() => {
-      v = Math.min(to, v + step);
-      el.textContent = String(v);
-      if (v >= to) clearInterval(iv);
-    }, 30);
-  });
-}, 1500);
-
 // department tabs (keyboard accessible)
 const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
 function select(i: number, focus = false) {

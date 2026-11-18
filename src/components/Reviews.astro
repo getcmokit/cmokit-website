@@ -1,0 +1,26 @@
+---
+import { reviews } from '../data/site';
+---
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow rv"><span class="ico">“</span>Reviews</div>
+    <h2 class="h2 rv">From people who bought our kits.</h2>
+    <div class="quote card rv" data-reviews>
+      {reviews.map((r, i) => (
+        <figure class="review" data-slide hidden={i !== 0}>
+          <blockquote>{r.quote}</blockquote>
+          <figcaption class="by">
+            {r.avatar ? <img class="av" src={r.avatar} alt={r.name} width="38" height="38" loading="lazy" /> : <span class="av">{r.name[0].toUpperCase()}</span>}
+            <div><b>{r.name}</b><small>{r.meta}</small></div>
+            {r.url && <a class="xlink" href={r.url} target="_blank" rel="noopener">See it on X ↗</a>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    {reviews.length > 1 && (
+      <div class="dots" role="tablist" aria-label="Reviews">
+        {reviews.map((r, i) => <button class="rdot" aria-label={`Review from ${r.name}`} aria-selected={i === 0 ? 'true' : 'false'} data-dot={i}></button>)}
+      </div>
+    )}
+  </div>
+</section>

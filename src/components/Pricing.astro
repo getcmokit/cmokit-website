@@ -1,53 +1,29 @@
 ---
-import { CONFIG, reviews } from '../data/site';
+import { CONFIG } from '../data/site';
 const { agents, skills, commands } = CONFIG.counts;
 ---
 <section class="sec" id="pricing">
   <div class="wrap">
-    <div class="eyebrow rv">Pricing</div>
-    <h2 class="h2 rv">Hire once. <em>Never pay rent on it.</em></h2>
-    <div class="price-grid">
-      <div class="quote rv">
-        <div class="reviews" data-reviews>
-          {reviews.map((r, i) => (
-            <figure class="review" data-slide hidden={i !== 0}>
-              <blockquote>“{r.quote}”</blockquote>
-              <figcaption class="by">
-                {r.avatar ? <img class="av" src={r.avatar} alt={r.name} width="48" height="48" loading="lazy" /> : <span class="av">{r.name[0].toUpperCase()}</span>}
-                <div><b>{r.name}</b><small>{r.meta}</small></div>
-                {r.url && <a class="xlink" href={r.url} target="_blank" rel="noopener">See it on X ↗</a>}
-              </figcaption>
-            </figure>
-          ))}
-          {reviews.length > 1 && (
-            <div class="dots" role="tablist" aria-label="Reviews">
-              {reviews.map((r, i) => <button class="rdot" aria-label={`Review from ${r.name}`} aria-selected={i === 0 ? 'true' : 'false'} data-dot={i}></button>)}
-            </div>
-          )}
-        </div>
-        <div>
-          <div class="guar">
-            <div><b>Private repo</b>Access on checkout</div>
-            <div><b>Lifetime updates</b>New skills, free</div>
-            <div><b>Any Claude plan</b>Pro, Max, Team or API</div>
-          </div>
-        </div>
-      </div>
-      <div class="pricecard rv">
-        <small>CMOkit · complete</small>
-        <div class="big"><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>}</div>
-        <div class="once">one-time payment · lifetime updates</div>
-        {CONFIG.launchNote && (
-          <div class="launch"><span class="dot"></span>{CONFIG.launchNote}{CONFIG.comparePrice && <>, then {CONFIG.comparePrice}</>}</div>
-        )}
+    <div class="eyebrow rv"><span class="ico">$</span>Pricing</div>
+    <div class="pricebox card rv">
+      <div class="price-l">
+        <h3>No subscription.</h3>
+        <p>Pay once, get private-repo access the moment you check out, and every future update after that. Works with any Claude Code plan: Pro, Max, Team or API.</p>
         <ul>
           <li>{agents} agents, {skills} skills, {commands} slash commands</li>
           <li>SEO, GEO/AEO, local SEO, content, paid, email, CRO</li>
-          <li>CLAUDE.md brand template + the <span class="mono" style="font-size:13px">cmokit</span> CLI</li>
-          <li>Private GitHub repo, every future update</li>
+          <li>CLAUDE.md brand template + the <code>cmokit</code> CLI</li>
+          <li>Private GitHub repo, lifetime updates</li>
         </ul>
-        <a href={CONFIG.checkoutUrl} class="btn btn-lime">Get CMOkit now <span class="arr">→</span></a>
-        <div class="secure">Secure checkout · instant private-repo access</div>
+        <p class="guar">Plain files in your repo. Edit anything; updates never touch your customizations.</p>
+      </div>
+      <div class="price-r">
+        <small>CMOkit · complete</small>
+        <div class="big"><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>}</div>
+        {CONFIG.launchNote && <div class="launch">{CONFIG.launchNote}</div>}
+        <div class="once">once, lifetime updates</div>
+        <a href={CONFIG.checkoutUrl} class="btn btn-dark">Get CMOkit <span class="arr">→</span></a>
+        <div class="secure">Secure checkout via Polar · instant private-repo access</div>
       </div>
     </div>
   </div>

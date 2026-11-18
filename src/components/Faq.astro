@@ -1,13 +1,13 @@
 ---
 import { faqs } from '../data/site';
 ---
-<section class="sec bg-paper" id="faq">
+<section class="sec" id="faq">
   <div class="wrap">
-    <div class="eyebrow rv">FAQ</div>
+    <div class="eyebrow rv"><span class="ico">?</span>FAQ</div>
     <h2 class="h2 rv">Questions founders ask.</h2>
     <div class="faq rv">
-      {faqs.map(([q, a], i) => (
-        <details open={i === 0}><summary>{q}<span class="pm">+</span></summary><p set:html={a} /></details>
+      {faqs.map(([q, a]) => (
+        <details><summary>{q}<span class="pm" aria-hidden="true">+</span></summary><p set:html={a} /></details>
       ))}
     </div>
   </div>

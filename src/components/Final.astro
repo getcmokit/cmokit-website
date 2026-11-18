@@ -1,8 +1,13 @@
-<section class="final bg-forest">
+---
+import { CONFIG } from '../data/site';
+---
+<section class="final">
   <div class="wrap">
-    <h2>Stop doing marketing<br />at <em>midnight.</em></h2>
-    <p>Give your startup the CMO it deserves, today, for less than one dinner out.</p>
-    <a href="#pricing" class="btn btn-lime">Hire your CMO <span class="arr">→</span></a>
-    <div class="wave" id="finalWave" aria-hidden="true"></div>
+    <h2 class="rv">Stop doing marketing<br />at <em>midnight.</em></h2>
+    <div class="hero-ctas rv">
+      <a href="#pricing" class="btn btn-dark">Get CMOkit</a>
+      <a href="#team" class="btn btn-ghost">Meet the team</a>
+    </div>
+    <p class="fine rv">{CONFIG.price} once<span>·</span>Lifetime updates<span>·</span>Works with any Claude Code plan</p>
   </div>
 </section>

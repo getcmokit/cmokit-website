@@ -20,13 +20,23 @@ const feats = [
       <Fragment slot="title">No subscription. Pay once.</Fragment>
       Get private-repo access the moment you check out, and every future update after that.
     </SecHead>
+    {CONFIG.india && (
+      <div class="india-offer" id="india-offer" hidden>
+        <span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div class="io-txt">
+          <b>Special price for India: {CONFIG.india.percent}% off</b>
+          <span>Use code <code>{CONFIG.india.code}</code> at checkout. We've already applied it to your link.</span>
+        </div>
+        <button type="button" class="io-copy" data-code={CONFIG.india.code}>Copy code</button>
+      </div>
+    )}
     <div class="ticket rv">
       <div class="t-left">
         <h3>CMOkit</h3>
         <p>The complete kit, every department.</p>
-        <div class="big"><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>}</div>
-        <small>Lifetime license</small>
-        <a href={CONFIG.checkoutUrl} class="btn btn-white btn-lg">Get lifetime access <Icon name="arrow" size={16} class="arr" /></a>
+        <div class="big"><b data-price>{CONFIG.price}</b>{CONFIG.comparePrice && <s data-compare>{CONFIG.comparePrice}</s>}</div>
+        <small data-price-note>Lifetime license</small>
+        <a href={CONFIG.checkoutUrl} data-checkout class="btn btn-white btn-lg">Get lifetime access <Icon name="arrow" size={16} class="arr" /></a>
       </div>
       <div class="t-right">
         {CONFIG.launchNote && <div class="launch"><span class="pulse"></span>{CONFIG.launchNote}</div>}
@@ -38,3 +48,27 @@ const feats = [
     </div>
   </div>
 </section>
+
+{CONFIG.india && (
+  <script is:inline define:vars={{ india: CONFIG.india, basePrice: CONFIG.price }}>
+    (function () {
+      var tz = '';
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+      if (!/^Asia\/(Kolkata|Calcutta)$/.test(tz)) return;
+      document.documentElement.classList.add('in-india');
+      var offer = document.getElementById('india-offer');
+      if (offer) offer.hidden = false;
+      document.querySelectorAll('[data-price]').forEach(function (el) { el.textContent = india.price; });
+      document.querySelectorAll('[data-compare]').forEach(function (el) { el.textContent = basePrice; });
+      document.querySelectorAll('[data-price-note]').forEach(function (el) { el.textContent = 'Lifetime license · India price with ' + india.code; });
+      document.querySelectorAll('[data-checkout], a[href^="https://buy.polar.sh/"]').forEach(function (a) {
+        try { var u = new URL(a.href); u.searchParams.set('discount_code', india.code); a.href = u.toString(); } catch (e) {}
+      });
+      var btn = offer && offer.querySelector('.io-copy');
+      if (btn) btn.addEventListener('click', function () {
+        var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy code'; }, 1600); };
+        if (navigator.clipboard) navigator.clipboard.writeText(india.code).then(done, function () {}); 
+      });
+    })();
+  </script>
+)}

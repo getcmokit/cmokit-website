@@ -24,7 +24,7 @@ const tiles: [string, string][] = [
       <a href="#team" class="btn btn-outline btn-lg"><Icon name="users" size={16} />Meet the team</a>
     </div>
     {CONFIG.launchNote ? (
-      <p class="fine rise" style="animation-delay:.3s"><span class="pulse"></span><b>LAUNCH:</b> <b class="o">{CONFIG.price}</b>{CONFIG.comparePrice && <> <s>{CONFIG.comparePrice}</s></>} for the first 20 customers</p>
+      <p class="fine rise" style="animation-delay:.3s"><span class="pulse"></span><b>LAUNCH:</b> <b class="o" data-price>{CONFIG.price}</b>{CONFIG.comparePrice && <> <s data-compare>{CONFIG.comparePrice}</s></>} for the first 20 customers</p>
     ) : null}
     <div class="trust rise" style="animation-delay:.36s">
       <span><Icon name="check" size={14} />Requires Claude Code</span>

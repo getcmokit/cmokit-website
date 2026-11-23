@@ -6,7 +6,7 @@ import { CONFIG } from '../data/site';
 {CONFIG.launchNote && (
   <a href="#pricing" class="announce">
     <Icon name="zap" size={13} />
-    <span><b>Launch price</b> · <b class="o">{CONFIG.price}</b>{CONFIG.comparePrice && <> <s>{CONFIG.comparePrice}</s></>} for the first 20 customers</span>
+    <span><b>Launch price</b> · <b class="o" data-price>{CONFIG.price}</b>{CONFIG.comparePrice && <> <s data-compare>{CONFIG.comparePrice}</s></>} for the first 20 customers</span>
     <Icon name="arrow" size={13} />
   </a>
 )}

@@ -3,6 +3,8 @@ export const CONFIG = {
   price: '$39',
   comparePrice: '$99', // set to '' to hide the strikethrough
   checkoutUrl: 'https://buy.polar.sh/polar_cl_EV6jWPc3cEiLOASFrWI3BjGBaHTrL8XA7gW6W0DROA9', // your Polar / Stripe / Lemon Squeezy link
+  // Regional discount shown only to visitors in India (detected from their browser time zone).
+  india: { code: 'INDIA50', percent: 50, price: '$19.50' }, // set to null to turn off
   launchNote: 'Launch price for the first 20 customers only', // set to '' to hide
   installCmd: 'npx github:getcmokit/cmokit init',
   counts: { agents: 56, skills: 505, commands: 32 },

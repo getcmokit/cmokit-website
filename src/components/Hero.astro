@@ -1,33 +1,75 @@
 ---
-import { CONFIG, roles } from '../data/site';
+import Icon from './Icon.astro';
+import { CONFIG, roles, departments, feed } from '../data/site';
 const { agents, skills, commands } = CONFIG.counts;
 const items = [...roles, ...roles];
+const tiles: [string, string][] = [
+  ['SEO', 'search'], ['AI search', 'bot'], ['Local', 'pin'], ['Content', 'pen'],
+  ['Paid', 'megaphone'], ['Email', 'mail'], ['CRO', 'trend'], ['Strategy', 'compass'],
+];
 ---
 <header class="hero">
-  <div class="ticker rise" aria-hidden="true">
-    <div class="track">
-      {items.map(([r, a]) => <span class="tk"><s>{r}</s>{a}</span>)}
+  <div class="wrap">
+    <div class="laurel rise">
+      <svg class="lf" viewBox="0 0 24 48" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="8" rx="2.4" ry="5" transform="rotate(30 14 8)"/><ellipse cx="9" cy="16" rx="2.4" ry="5" transform="rotate(10 9 16)"/><ellipse cx="7" cy="25" rx="2.4" ry="5" transform="rotate(-10 7 25)"/><ellipse cx="9" cy="34" rx="2.4" ry="5" transform="rotate(-35 9 34)"/><ellipse cx="15" cy="41" rx="2.4" ry="5" transform="rotate(-60 15 41)"/></g></svg>
+      <div><b>Built for</b><span>Claude Code</span></div>
+      <svg class="lf r" viewBox="0 0 24 48" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="8" rx="2.4" ry="5" transform="rotate(30 14 8)"/><ellipse cx="9" cy="16" rx="2.4" ry="5" transform="rotate(10 9 16)"/><ellipse cx="7" cy="25" rx="2.4" ry="5" transform="rotate(-10 7 25)"/><ellipse cx="9" cy="34" rx="2.4" ry="5" transform="rotate(-35 9 34)"/><ellipse cx="15" cy="41" rx="2.4" ry="5" transform="rotate(-60 15 41)"/></g></svg>
+    </div>
+    <h1 class="rise" style="animation-delay:.08s">The Marketing Kit<br class="br" /> Your Startup Needs</h1>
+    <p class="lede rise" style="animation-delay:.16s">
+      <span class="ichip"><Icon name="users" size={14} />{agents} agents</span>, <span class="ichip"><Icon name="sparkles" size={14} />{skills} skills</span> and <span class="ichip"><Icon name="terminal" size={14} />{commands} commands</span> for Claude Code. SEO, AI search, content, ads and launches, run from your own repo.
+    </p>
+    <div class="hero-ctas rise" style="animation-delay:.24s">
+      <a href="#pricing" class="btn btn-primary btn-lg">Get CMOkit</a>
+      <a href="#team" class="btn btn-outline btn-lg"><Icon name="users" size={16} />Meet the team</a>
+    </div>
+    {CONFIG.launchNote ? (
+      <p class="fine rise" style="animation-delay:.3s"><span class="pulse"></span><b>LAUNCH:</b> <b class="o">{CONFIG.price}</b>{CONFIG.comparePrice && <> <s>{CONFIG.comparePrice}</s></>} for the first 20 customers</p>
+    ) : null}
+    <div class="trust rise" style="animation-delay:.36s">
+      <span><Icon name="check" size={14} />Requires Claude Code</span>
+      <span><Icon name="check" size={14} />One-time payment</span>
+      <span><Icon name="check" size={14} />Lifetime updates</span>
+      <span><Icon name="check" size={14} />~2 min install</span>
     </div>
   </div>
-  <div class="wrap">
-    <h1 class="rise" style="animation-delay:.1s">The <em>CMO</em> your startup can <em>finally afford</em></h1>
-    <p class="lede rise" style="animation-delay:.2s">{agents} specialist agents, {skills} skills and {commands} slash commands for Claude Code. SEO, AI search, content, ads and launches, run from your own repo.</p>
-    <div class="hero-ctas rise" style="animation-delay:.3s">
-      <a href="#pricing" class="btn btn-dark">Get CMOkit</a>
-      <a href="#team" class="btn btn-ghost">Meet the team</a>
-    </div>
-    <p class="fine rise" style="animation-delay:.36s">Requires Claude Code<span>·</span>One-time payment<span>·</span>Lifetime updates</p>
-    {CONFIG.launchNote && (
-      <div class="rise" style="animation-delay:.44s">
-        <div class="launch-hero"><span class="dot"></span><span><b>{CONFIG.price}</b>{CONFIG.comparePrice && <> <s>{CONFIG.comparePrice}</s></>} · {CONFIG.launchNote.toLowerCase()}</span></div>
+
+  <div class="wrap wide">
+    <div class="ticker rise" style="animation-delay:.44s" aria-hidden="true">
+      <div class="track">
+        {items.map(([r, a]) => <span class="tk"><s>{r}</s><b>{a}</b></span>)}
       </div>
-    )}
-    <div class="stats rise" style="animation-delay:.52s">
-      <div><b class="g">● {agents} agents</b> across marketing</div>
-      <div><b>{skills}</b> skills</div>
-      <div><b>{commands}</b> commands</div>
-      <div><b>~2 min</b> to install</div>
-      <div><b>No subscription</b> pay once</div>
+    </div>
+
+    <div class="stage rise" style="animation-delay:.52s">
+      <div class="orb" aria-hidden="true">
+        <span class="ring r1"></span><span class="ring r2"></span>
+        <span class="core"><svg viewBox="0 0 18 18"><path d="M2.75 12.5 L6.75 8.5 L9.75 11 L15.25 5.5 M11.25 5.5 H15.25 V9.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="beam"></span>
+      </div>
+      <div class="window">
+        <div class="win-bar"><i></i><i></i><i></i><span>~/your-startup · claude</span><b></b></div>
+        <div class="win-body grid-bg">
+          <div class="feed">
+            <div class="callout"><Icon name="workflow" size={18} />Your team, working</div>
+            {feed.map(([who, what, when], i) => (
+              <div class="feed-item" style={`--i:${i}`}>
+                <span class="fi-ico"><Icon name="check" size={14} /></span>
+                <div><b>{who}</b> · <small>{when}</small><p>{what}</p></div>
+              </div>
+            ))}
+          </div>
+          <div class="tiles-wrap">
+            <div class="callout"><Icon name="window" size={18} />Every department, staffed</div>
+            <div class="tiles">
+              {tiles.map(([t, ic], i) => (
+                <a href="#team" class="tile" data-dept={i}><Icon name={ic} size={22} /><span>{t}</span><small>{departments[i].agents.length} {departments[i].agents.length === 1 ? 'agent' : 'agents'}</small></a>
+              ))}
+              <a href="#how" class="tile add"><Icon name="plus" size={22} /><span>Add yours</span><small>plain Markdown</small></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

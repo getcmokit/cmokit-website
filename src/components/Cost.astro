@@ -1,26 +1,44 @@
 ---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
 import { CONFIG } from '../data/site';
+const plus: [string, string][] = [
+  ['$250k/yr', 'for a full-time CMO, plus equity'],
+  ['3 months', 'to hire one'],
+  ['$5k+/mo', 'for an agency retainer'],
+  ['2–4 wks', 'of onboarding calls'],
+  ['∞ hrs', 'doing marketing at midnight…'],
+];
 ---
-<section class="sec">
+<section class="sec" id="cost">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">$</span>The math</div>
-    <h2 class="h2 rv">A real CMO costs more than <em>your runway.</em></h2>
-    <p class="sub rv">Early-stage founders end up doing marketing at midnight, or paying a retainer for someone to learn their product. There's a third option now.</p>
-    <div class="cost-grid">
-      <div class="cost card rv">
-        <small>Full-time CMO</small>
-        <div class="amt">$250k<span>/yr</span></div>
-        <ul><li>Plus equity and a 3-month search</li><li>One person, one specialty</li><li>Needs a team under them anyway</li></ul>
-      </div>
-      <div class="cost card rv">
-        <small>Agency retainer</small>
-        <div class="amt">$5k+<span>/mo</span></div>
-        <ul><li>Weeks of onboarding calls</li><li>Junior staff on your account</li><li>Monthly reports, slow changes</li></ul>
-      </div>
-      <div class="cost card win rv">
-        <small>CMOkit</small>
-        <div class="amt">{CONFIG.price}<span>once</span></div>
-        <ul><li>{CONFIG.counts.agents} specialists across every channel</li><li>Works the moment you prompt it</li><li>Lives in your repo, yours forever</li></ul>
+    <SecHead badge="The math" icon="dollar">
+      <Fragment slot="title">A real CMO costs more<br class="br" /> than your runway</Fragment>
+      Early-stage founders end up doing marketing at midnight, or paying a retainer for someone to learn their product. There's a third option now.
+    </SecHead>
+    <div class="cost-split">
+      <ul class="plus-list">
+        {plus.map(([n, t]) => (
+          <li class="rv"><span class="pl"><Icon name="plus" size={16} /></span><span class="pill-n">{n}</span>{t}</li>
+        ))}
+      </ul>
+      <div class="cost-grid">
+        <div class="cost card rv">
+          <small>Full-time CMO</small>
+          <div class="amt">$250k<span>/yr</span></div>
+          <ul><li>Plus equity and a 3-month search</li><li>One person, one specialty</li><li>Needs a team under them anyway</li></ul>
+        </div>
+        <div class="cost card rv">
+          <small>Agency retainer</small>
+          <div class="amt">$5k+<span>/mo</span></div>
+          <ul><li>Weeks of onboarding calls</li><li>Junior staff on your account</li><li>Monthly reports, slow changes</li></ul>
+        </div>
+        <div class="cost card win rv">
+          <span class="tag">Best value</span>
+          <small>CMOkit</small>
+          <div class="amt">{CONFIG.price}<span>once</span></div>
+          <ul><li>{CONFIG.counts.agents} specialists across every channel</li><li>Works the moment you prompt it</li><li>Lives in your repo, yours forever</li></ul>
+        </div>
       </div>
     </div>
     <p class="note rv">Salary and retainer figures are typical US market ranges, shown for comparison.</p>

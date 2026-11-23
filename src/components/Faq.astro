@@ -1,13 +1,16 @@
 ---
+import SecHead from './SecHead.astro';
 import { faqs } from '../data/site';
 ---
 <section class="sec" id="faq">
-  <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">?</span>FAQ</div>
-    <h2 class="h2 rv">Questions founders ask.</h2>
+  <div class="wrap narrow">
+    <SecHead badge="FAQ" icon="help">
+      <Fragment slot="title">Questions founders ask</Fragment>
+      Everything to know before you buy.
+    </SecHead>
     <div class="faq rv">
       {faqs.map(([q, a]) => (
-        <details><summary>{q}<span class="pm" aria-hidden="true">+</span></summary><p set:html={a} /></details>
+        <details><summary>{q}<span class="pm" aria-hidden="true"></span></summary><p set:html={a} /></details>
       ))}
     </div>
   </div>

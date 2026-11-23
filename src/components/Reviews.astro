@@ -1,26 +1,38 @@
 ---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
 import { reviews } from '../data/site';
+const split = (q: string, h?: string) => {
+  if (!h || !q.includes(h)) return [q, '', ''];
+  const i = q.indexOf(h);
+  return [q.slice(0, i), h, q.slice(i + h.length)];
+};
 ---
 <section class="sec">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">“</span>Reviews</div>
-    <h2 class="h2 rv">From people who bought our kits.</h2>
-    <div class="quote card rv" data-reviews>
-      {reviews.map((r, i) => (
-        <figure class="review" data-slide hidden={i !== 0}>
-          <blockquote>{r.quote}</blockquote>
-          <figcaption class="by">
-            {r.avatar ? <img class="av" src={r.avatar} alt={r.name} width="38" height="38" loading="lazy" /> : <span class="av">{r.name[0].toUpperCase()}</span>}
-            <div><b>{r.name}</b><small>{r.meta}</small></div>
-            {r.url && <a class="xlink" href={r.url} target="_blank" rel="noopener">See it on X ↗</a>}
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-    {reviews.length > 1 && (
-      <div class="dots" role="tablist" aria-label="Reviews">
-        {reviews.map((r, i) => <button class="rdot" aria-label={`Review from ${r.name}`} aria-selected={i === 0 ? 'true' : 'false'} data-dot={i}></button>)}
+    <SecHead badge="Reviews" icon="quote">
+      <Fragment slot="title">From people who bought our kits</Fragment>
+    </SecHead>
+    <div class="reviews">
+      {reviews.map((r) => {
+        const [a, h, b] = split(r.quote, r.highlight);
+        return (
+          <figure class="review card rv">
+            <div class="stars" aria-label="5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star" size={16} />)}</div>
+            <blockquote>{a}{h && <mark>{h}</mark>}{b}</blockquote>
+            <figcaption class="by">
+              {r.avatar ? <img class="av" src={r.avatar} alt={r.name} width="36" height="36" loading="lazy" /> : <span class="av">{r.name[0].toUpperCase()}</span>}
+              <div><b>{r.name}</b><small>{r.meta}</small></div>
+              {r.url && <a class="xlink" href={r.url} target="_blank" rel="noopener" aria-label={`${r.name} on X`}>𝕏</a>}
+            </figcaption>
+          </figure>
+        );
+      })}
+      <div class="review maybe rv">
+        <h3>Maybe you?</h3>
+        <p>Ship your first campaign this week, then tell us how it went.</p>
+        <a href="#pricing" class="btn btn-primary btn-sm">Get CMOkit</a>
       </div>
-    )}
+    </div>
   </div>
 </section>

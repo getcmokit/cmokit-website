@@ -1,15 +1,29 @@
+---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
+const tree: [string, number, string][] = [
+  ['.claude', 0, 'folder'], ['agents', 1, 'users'], ['skills', 1, 'sparkles'], ['commands', 1, 'terminal'], ['runtime', 1, 'folder'], ['CLAUDE.md', 0, 'file'], ['src', 0, 'folder'], ['package.json', 0, 'file'],
+];
+---
 <section class="sec" id="how">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">›_</span>How it works</div>
-    <h2 class="h2 rv">Two minutes, start to first campaign.</h2>
+    <SecHead badge="How it works" icon="zap">
+      <Fragment slot="title">Two minutes, start<br class="br" /> to first campaign</Fragment>
+      No dashboards, no new logins. The team installs into your project as plain files and works inside Claude Code.
+    </SecHead>
     <div class="steps">
       <div class="step card rv"><div class="num">1</div><h4>Get access</h4><p>Pay once. Private-repo access lands on your GitHub account right after checkout.</p></div>
       <div class="step card rv"><div class="num">2</div><h4>Install</h4><p>One <code>npx</code> command drops the team into your project's <code>.claude/</code> folder. Nothing global.</p></div>
       <div class="step card rv"><div class="num">3</div><h4>Brief your CMO</h4><p>Fill in <code>CLAUDE.md</code> once: product, audience, voice. Every agent reads it before it works.</p></div>
     </div>
-    <div class="term rv">
-      <div class="term-bar"><i></i><i></i><i></i><span>your-startup — zsh</span></div>
-      <pre id="term"></pre>
+    <div class="code-card card rv">
+      <aside class="tree" aria-hidden="true">
+        {tree.map(([n, d, ic]) => <div style={`padding-left:${d * 16}px`}><Icon name={ic} size={14} />{n}</div>)}
+      </aside>
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>your-startup — zsh</span></div>
+        <pre id="term"></pre>
+      </div>
     </div>
   </div>
 </section>

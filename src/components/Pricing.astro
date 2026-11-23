@@ -1,29 +1,39 @@
 ---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
 import { CONFIG } from '../data/site';
 const { agents, skills, commands } = CONFIG.counts;
+const feats = [
+  `${agents} agents, ${skills} skills, ${commands} slash commands`,
+  'SEO, GEO/AEO, local SEO, content, paid, email, CRO',
+  'CLAUDE.md brand template',
+  'The <code>cmokit</code> CLI installer',
+  'Private GitHub repo access',
+  'Lifetime updates',
+  'Works with Pro, Max, Team or API',
+  'Plain files: edit anything',
+];
 ---
 <section class="sec" id="pricing">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">$</span>Pricing</div>
-    <div class="pricebox card rv">
-      <div class="price-l">
-        <h3>No subscription.</h3>
-        <p>Pay once, get private-repo access the moment you check out, and every future update after that. Works with any Claude Code plan: Pro, Max, Team or API.</p>
-        <ul>
-          <li>{agents} agents, {skills} skills, {commands} slash commands</li>
-          <li>SEO, GEO/AEO, local SEO, content, paid, email, CRO</li>
-          <li>CLAUDE.md brand template + the <code>cmokit</code> CLI</li>
-          <li>Private GitHub repo, lifetime updates</li>
-        </ul>
-        <p class="guar">Plain files in your repo. Edit anything; updates never touch your customizations.</p>
-      </div>
-      <div class="price-r">
-        <small>CMOkit · complete</small>
+    <SecHead badge="Pricing" icon="dollar">
+      <Fragment slot="title">No subscription. Pay once.</Fragment>
+      Get private-repo access the moment you check out, and every future update after that.
+    </SecHead>
+    <div class="ticket rv">
+      <div class="t-left">
+        <h3>CMOkit</h3>
+        <p>The complete kit, every department.</p>
         <div class="big"><b>{CONFIG.price}</b>{CONFIG.comparePrice && <s>{CONFIG.comparePrice}</s>}</div>
-        {CONFIG.launchNote && <div class="launch">{CONFIG.launchNote}</div>}
-        <div class="once">once, lifetime updates</div>
-        <a href={CONFIG.checkoutUrl} class="btn btn-dark">Get CMOkit <span class="arr">→</span></a>
-        <div class="secure">Secure checkout via Polar · instant private-repo access</div>
+        <small>Lifetime license</small>
+        <a href={CONFIG.checkoutUrl} class="btn btn-white btn-lg">Get lifetime access <Icon name="arrow" size={16} class="arr" /></a>
+      </div>
+      <div class="t-right">
+        {CONFIG.launchNote && <div class="launch"><span class="pulse"></span>{CONFIG.launchNote}</div>}
+        <ul>
+          {feats.map((f) => <li><Icon name="check" size={16} /><span set:html={f} /></li>)}
+        </ul>
+        <p class="guar"><Icon name="shield" size={14} />Secure checkout via Polar · instant private-repo access · updates never touch your customizations</p>
       </div>
     </div>
   </div>

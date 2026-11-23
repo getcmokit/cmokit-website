@@ -1,18 +1,36 @@
+---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
+const steps: [string, string, number][] = [
+  ['growth-strategist', 'launch timeline, owner per task, day-of checklist', 100],
+  ['market-researcher', '5 competitors and the angle none of them use', 100],
+  ['product-hunt-launch', 'tagline, gallery copy, maker comment', 86],
+  ['seo-content', 'landing page rewrite for 3 buyer keywords', 64],
+  ['email-sequence', '4-email waitlist warm-up, subject lines tested', 42],
+  ['brand-voice', 'everything checked against your voice and claims', 18],
+];
+---
 <section class="sec">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">✎</span>In practice</div>
-    <h2 class="h2 rv">You type one line. A launch happens.</h2>
-    <div class="practice">
-      <div class="ptype card rv"><small>You type</small><p><span class="c">/launch-plan</span> we're launching on Product Hunt next Tuesday. B2B invoicing tool for freelancers.</p></div>
-      <div class="parrow rv" aria-hidden="true">→</div>
-      <div class="pget card rv"><small>Your team delivers</small>
+    <SecHead badge="In practice" icon="workflow">
+      <Fragment slot="title">You type one line.<br class="br" /> A launch happens.</Fragment>
+    </SecHead>
+    <div class="bento practice">
+      <div class="ptype card rv">
+        <div class="card-title"><Icon name="terminal" size={18} />You type</div>
+        <p><span class="c">/launch-plan</span> we're launching on Product Hunt next Tuesday. B2B invoicing tool for freelancers.</p>
+        <div class="hint"><Icon name="arrow" size={14} />The growth-strategist splits the work and hands each piece to a specialist.</div>
+      </div>
+      <div class="pget card rv">
+        <div class="card-title"><Icon name="workflow" size={18} />Your team delivers</div>
         <ol>
-          <li><b>growth-strategist</b>launch timeline, owner per task, day-of checklist</li>
-          <li><b>market-researcher</b>5 competitors and the angle none of them use</li>
-          <li><b>product-hunt-launch</b>tagline, gallery copy, maker comment</li>
-          <li><b>seo-content</b>landing page rewrite for 3 buyer keywords</li>
-          <li><b>email-sequence</b>4-email waitlist warm-up, subject lines tested</li>
-          <li><b>brand-voice</b>everything checked against your voice and claims</li>
+          {steps.map(([n, t, p]) => (
+            <li>
+              <div class="pl-top"><span class={p === 100 ? 'st done' : 'st'}><Icon name={p === 100 ? 'check' : 'clock'} size={12} /></span><b>{n}</b><small>{p === 100 ? 'done' : `${p}%`}</small></div>
+              <p>{t}</p>
+              <div class="bar"><i style={`width:${p}%`}></i></div>
+            </li>
+          ))}
         </ol>
       </div>
     </div>

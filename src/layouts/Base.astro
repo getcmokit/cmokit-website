@@ -27,7 +27,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#f3f3f4" />
+    <meta name="theme-color" content="#ffffff" />
     <script is:inline>document.documentElement.classList.add("js")</script>
     <!-- DataFast analytics -->
     <script
@@ -39,9 +39,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </script>
     <!-- Ship or Die hackathon verification -->
     <script is:inline defer src="https://www.ship-or-die.com/hackathon/verify.js" data-site="2471444cbae9aaa84c3dbf42f2ce819ca96c32e7"></script>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',

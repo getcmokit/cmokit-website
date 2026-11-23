@@ -127,6 +127,7 @@ export interface Review {
   quote: string;
   name: string;
   meta: string; // role / handle line
+  highlight?: string; // part of the quote to mark in orange
   avatar?: string; // path in /public, falls back to an initial
   url?: string; // link to the original post
 }
@@ -136,8 +137,18 @@ export const reviews: Review[] = [
   {
     quote: "Mohit… thank you! I'm using your kit in my new project and it's actually really helpful.",
     name: 'Ioannis Antypas',
+    highlight: "it's actually really helpful.",
     meta: '@ioannis_antypas · on AgentsKit, our first kit',
     avatar: '/reviews/ioannis-antypas.jpg',
     url: 'https://x.com/ioannis_antypas',
   },
+];
+
+// Hero mock-up: an example of what the team hands back. Illustrative, not live data.
+export const feed: [string, string, string][] = [
+  ['seo-technical', 'Ranked the 10 fixes that matter this week', 'just now'],
+  ['geo-ai-visibility', 'Wrote llms.txt and answer-ready FAQ blocks', '2m ago'],
+  ['content-marketer', 'Turned the changelog into a blog post + thread', '5m ago'],
+  ['email-sequence', 'Drafted a 5-email onboarding sequence', '9m ago'],
+  ['page-cro', 'Rewrote the pricing page hero and CTA', '14m ago'],
 ];

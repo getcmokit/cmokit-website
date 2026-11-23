@@ -1,4 +1,5 @@
 ---
+import SecHead from './SecHead.astro';
 import { CONFIG } from '../data/site';
 const rows: [string, string, string, string, boolean?][] = [
   ['Cost', `${CONFIG.price} once`, '$5k+ every month', 'Your evenings'],
@@ -12,11 +13,12 @@ const rows: [string, string, string, string, boolean?][] = [
 ---
 <section class="sec">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">⇄</span>Compared</div>
-    <h2 class="h2 rv">CMOkit vs doing it the old way.</h2>
-    <p class="sub rv">All three end with marketing getting done. One takes two minutes to set up.</p>
-    <div class="tbl rv" role="table">
-      <div class="tr head" role="row"><div></div><div>CMOkit</div><div>Agency</div><div>DIY with prompts</div></div>
+    <SecHead badge="Compared" icon="swap">
+      <Fragment slot="title">CMOkit vs doing it the old way</Fragment>
+      All three end with marketing getting done. One takes two minutes to set up.
+    </SecHead>
+    <div class="tbl card rv" role="table">
+      <div class="tr head" role="row"><div></div><div class="us">CMOkit</div><div>Agency</div><div>DIY with prompts</div></div>
       {rows.map(([k, us, ag, diy, bad]) => (
         <div class="tr" role="row"><div>{k}</div><div class="y">{us}</div><div class="n">{ag}</div><div class={bad ? 'bad' : 'n'}>{diy}</div></div>
       ))}

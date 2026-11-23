@@ -1,6 +1,15 @@
 ---
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { CONFIG } from '../data/site';
 ---
+{CONFIG.launchNote && (
+  <a href="#pricing" class="announce">
+    <Icon name="zap" size={13} />
+    <span><b>Launch price</b> · <b class="o">{CONFIG.price}</b>{CONFIG.comparePrice && <> <s>{CONFIG.comparePrice}</s></>} for the first 20 customers</span>
+    <Icon name="arrow" size={13} />
+  </a>
+)}
 <nav id="nav">
   <div class="wrap nav-in">
     <Logo />
@@ -12,7 +21,7 @@ import Logo from './Logo.astro';
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a href="#pricing" class="btn btn-white nav-cta">Get CMOkit</a>
+      <a href="#pricing" class="btn btn-primary btn-sm nav-cta">Get CMOkit</a>
     </div>
   </div>
 </nav>

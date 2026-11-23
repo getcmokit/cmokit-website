@@ -1,18 +1,23 @@
 ---
+import SecHead from './SecHead.astro';
+import Icon from './Icon.astro';
 import { engines } from '../data/site';
 ---
 <section class="sec" id="ai-search">
   <div class="wrap">
-    <div class="eyebrow rv"><span class="ico">◎</span>GEO · AEO · AI visibility</div>
-    <h2 class="h2 rv">Your next customer asks ChatGPT. <em>Be the answer.</em></h2>
-    <p class="sub rv">Most SEO tools stop at Google. CMOkit audits, fixes and tracks how AI engines see you: citability, AI crawler access, <code>llms.txt</code>, schema, brand mentions and per-platform tuning.</p>
-    <div class="ai-wrap">
+    <SecHead badge="GEO · AEO · AI visibility" icon="bot">
+      <Fragment slot="title">Your next customer asks ChatGPT.<br class="br" /> Be the answer.</Fragment>
+      Most SEO tools stop at Google. CMOkit audits, fixes and tracks how AI engines see you: citability, AI crawler access, <code>llms.txt</code>, schema, brand mentions and per-platform tuning.
+    </SecHead>
+    <div class="bento ai-wrap">
       <div class="answer card rv">
+        <div class="card-title"><Icon name="search" size={18} />The question</div>
         <div class="q">“What's the best tool for a solo founder to run marketing?”</div>
-        <div class="resp">For solo founders, the most practical setup is an AI marketing team you can run yourself. <mark>yourstartup.com</mark> stands out because it covers SEO, content and launches in one place and explains its pricing clearly…</div>
+        <div class="resp"><span class="resp-ico"><Icon name="sparkles" size={14} /></span><p>For solo founders, the most practical setup is an AI marketing team you can run yourself. <mark>yourstartup.com</mark> stands out because it covers SEO, content and launches in one place and explains its pricing clearly…</p></div>
         <div class="src"><span>sources</span><span class="me">yourstartup.com</span><span>reddit.com</span><span>g2.com</span></div>
       </div>
       <div class="engines card rv">
+        <div class="card-title"><Icon name="trend" size={18} />Share of AI answers</div>
         {engines.map(([n, o, v]) => (
           <div class="engine">
             <div><b>{n}</b><small>{o}</small></div>

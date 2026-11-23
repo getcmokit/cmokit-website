@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+interface Props { badge: string; icon: string; align?: 'center' | 'left' }
+const { badge, icon, align = 'center' } = Astro.props;
+---
+<div class={`sec-head ${align}`}>
+  <span class="badge rv"><Icon name={icon} size={14} />{badge}</span>
+  <h2 class="h2 rv"><slot name="title" /></h2>
+  {Astro.slots.has('default') && <p class="sub rv"><slot /></p>}
+</div>
